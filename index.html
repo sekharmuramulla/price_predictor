@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Boston House Price Predictor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap 4 CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+    body {
+      background: linear-gradient(to right, #e0f7fa, #ffffff);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-box {
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .form-control {
+      border-radius: 8px;
+    }
+
+    .btn-success {
+      width: 100%;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .prediction {
+      margin-top: 20px;
+      font-size: 1.25rem;
+      text-align: center;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="form-box">
+    <h3 class="text-center mb-4">🏠 Boston House Price Predictor</h3>
+    <form action="/predict" method="post">
+      <div class="form-group">
+        <label for="crim">CRIM - Crime Rate (per capita)</label>
+        <input type="number" name="CRIM" id="crim" step="any" class="form-control" placeholder="e.g., 0.2" required>
+
+        <label for="rm" class="mt-3">RM - Avg Rooms per Dwelling</label>
+        <input type="number" name="RM" id="rm" step="any" class="form-control" placeholder="e.g., 6.5" required>
+
+        <label for="dis" class="mt-3">DIS - Distance to Employment Centers</label>
+        <input type="number" name="DIS" id="dis" step="any" class="form-control" placeholder="e.g., 4.2" required>
+
+        <label for="tax" class="mt-3">TAX - Property Tax Rate</label>
+        <input type="number" name="TAX" id="tax" step="1" class="form-control" placeholder="e.g., 296" required>
+
+        <label for="ptratio" class="mt-3">PTRATIO - Pupil-Teacher Ratio</label>
+        <input type="number" name="PTRATIO" id="ptratio" step="any" class="form-control" placeholder="e.g., 15.3" required>
+
+        <label for="lstat" class="mt-3">LSTAT - % Lower Status Population</label>
+        <input type="number" name="LSTAT" id="lstat" step="any" class="form-control" placeholder="e.g., 12.5" required>
+      </div>
+
+      <button type="submit" class="btn btn-success mt-3">Predict</button>
+    </form>
+
+    {% if prediction_text %}
+      <div class="prediction">{{ prediction_text }}</div>
+    {% endif %}
+  </div>
+
+  <!-- Optional JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
