@@ -3,7 +3,6 @@ import pickle
 import pandas as pd
 import os
 
-
 # Initialize the app
 app = Flask(__name__)
 
@@ -45,5 +44,4 @@ def predict():
         return render_template('index.html', prediction_text=f"Error: {e}")
 
 if __name__ == '__main__':
-  app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
-
+    app.run(debug=True)
